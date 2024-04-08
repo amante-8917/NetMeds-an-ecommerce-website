@@ -1,0 +1,49 @@
+{% extends 'store/home.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Update</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+    <h1 class="text-center mt-5">Update Profile</h1>
+    <div class="card" style=" width: 28rem; margin-left:30%; margin-top: 2.5%;
+    "
+    >
+        <div class="card-body">
+
+            <form action="update_seller_profile/{{ user.id }}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname"
+                           placeholder="{{ user.first_name }}">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname"
+                           placeholder="{{ user.last_name }}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email"
+                           placeholder="{{ user.email }}"
+                    >
+                </div>
+                <div class="form-group">
+                    <label for="email">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone"
+                           placeholder="{{ user.phone }}"
+                    >
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+
+            </form>
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock content %}

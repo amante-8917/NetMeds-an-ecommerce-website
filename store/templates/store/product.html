@@ -1,0 +1,41 @@
+{% extends 'store/home.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Product</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+    <div class="card mx-auto mt-5" style="width:640px; overflow:hidden">
+        <img class="card-img-top" src="/media/{{ product.product_image }}" alt="Card image cap"
+             style="width:640px; height:350px">
+        <div class="card-body">
+            <h5 class="card-title">{{ product.product_name }}</h5>
+            <p class="card-text text-sm-left" style="width:540px; overflow:auto">{{ product.product_description }}</p>
+            <h6><strong>Publishing Date: </strong>{{ product.product_publishing_date }}</h6>
+            <h6><strong>Status of Product: </strong>{{ product.product_status }}</h6>
+            <h6><strong>Years used: </strong>{{ product.product_year }}</h6>
+            <h6><strong>Rs. : </strong>{{ product.product_price }}</h6>
+            <h6><strong>Owner of the product: </strong></h6>
+            <p>
+                <strong>Name: </strong>{{ product.product_listed_by.first_name }} {{ product.product_listed_by.last_name }}
+            </p>
+            <p><strong>Phone: </strong> {{ product.product_listed_by.phone }}</p>
+            <p><strong>Email: </strong> {{ product.product_listed_by.email }}</p>
+
+            {% if user.is_authenticated %}
+                {% if user.id == product.product_listed_by.id %}
+                    <a href="update_product_page/{{ product.product_id }}" class="btn btn-primary">Update Product</a>
+                    <a href="delete_product/{{ product.product_id }}" class="btn btn-primary">Delete Product</a>
+                {% else %}
+                    <a href="ask_query_page/{{ product.product_id }}" class="btn btn-primary">Ask a Query</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock content %}

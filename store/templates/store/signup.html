@@ -1,0 +1,75 @@
+{% extends 'store/home.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+    <div class="container my-3">
+        <h1 class="text-center mt-5">Sign Up</h1>
+        <div class="card" style=" width: 28rem; margin-left:30%; margin-top: 2.5%;
+    "
+        >
+            <div class="card-body">
+                <form action="{% url 'create_seller' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" id="firstname" name="firstname"
+                               placeholder="Enter Your First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname"
+                               placeholder="Enter Your Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                               placeholder="name@example.com"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone"
+                               placeholder="Enter your mobile number"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="Choose a unique username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Choose a password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Choose Your Password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword">Confirm password</label>
+                        <input type="password" class="form-control" id="confirmpassword"
+                               name="confirmpassword"
+                               placeholder="Choose Your Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                </form>
+            </div>
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <ul class="messages text-danger " style="list-style-type:none">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock content %}

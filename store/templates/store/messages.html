@@ -1,0 +1,31 @@
+{% extends 'store/home.html' %}
+{% load static %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Messages</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+    <h1 class="text-center mt-5">Notifications</h1>
+    <div class="container my-3">
+        <div class="row">
+            {% for notification in notifications %}
+                <div class="col-lg-4 mx-auto mt-5">
+
+                    <div class="box-element product">
+                        <p><strong>Name: </strong>{{ notification.query_owner_name }}</p>
+                        <p><strong>Phone: </strong>{{ notification.query_owner_phone }}</p>
+                        <p><strong>Email: </strong>{{ notification.query_owner_email }}</p>
+                        <p><strong>Description: </strong>{{ notification.query_description }}</p>
+                        <a class="btn btn-outline-success add-btn" href="">Delete Notification</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </body>
+    </html>
+{% endblock content %}

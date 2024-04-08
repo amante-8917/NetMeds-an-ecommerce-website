@@ -1,0 +1,45 @@
+from django.urls import path, re_path
+
+from store import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('contact/', views.contact, name='contact'),
+    path('admin/', views.admin, name='admin'),
+    path("loginpage/", views.login_page, name="login_page"),
+    path("signuppage/", views.signup_page, name="signup_page"),
+    path("logout/", views.logout_request, name="logout"),
+    path('forgotpassword/', views.forgot_password, name='forgot_password'),
+    path('changepassword/', views.change_password, name='change_password'),
+    path('updateprofile/', views.update_profile, name='update_profile'),
+    path('createseller/', views.create_seller, name='create_seller'),
+    path('sellerlogin/', views.seller_login, name='seller_login'),
+    path('updateprofile/update_seller_profile/<int:user_id>', views.update_seller_profile,
+         name='update_seller_profile'),
+    path('changepasswordpage/', views.change_password_page, name='change_password_page'),
+    path('updatepassword/', views.update_password, name='update_password'),
+    path('newproductpage/', views.new_product_page, name='new_product_page'),
+    path('productlist/product/update_product_page/update_product/<int:product_id>', views.update_product,
+         name='update_product'),
+    path('product/update_product_page/<int:product_id>', views.update_product_page, name='update_product_page'),
+    path('productlist/product/update_product_page/<int:product_id>', views.update_product_page,
+         name='update_product_page'),
+    path('newproduct/', views.new_product, name='new_product'),
+    path('product/update_product_page/update_product/<int:product_id>', views.update_product, name='update_product'),
+    path('product/<int:product_id>', views.product, name='product'),
+    path('newproduct/product/<int:product_id>', views.product, name='product'),
+    path('productlist/product/<int:product_id>', views.product, name='product'),
+    path('productlist/product/update_product_page/update_product/product/<int:product_id>', views.product,
+         name='product'),
+    path('productlist/', views.product_list, name='product_list'),
+    path('product/delete_product/<int:product_id>', views.delete_product, name='delete_product'),
+    path('productlist/product/delete_product/<int:product_id>', views.delete_product, name='delete_product'),
+    path('product/ask_query_page/<int:product_id>', views.ask_query_page, name='ask_query_page'),
+    path('product/ask_query_page/ask_query/<int:product_id>', views.ask_query, name='ask_query'),
+    path('notifications/', views.notifications, name='notifications'),
+    path('filter/<str:category>', views.filter, name='filter'),
+    path('filter/product/<int:product_id>', views.product, name='product'),
+    path('search/', views.search, name='search')
+
+]
